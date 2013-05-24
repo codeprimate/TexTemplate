@@ -1,0 +1,32 @@
+\documentclass[twoside]{article}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+
+% Set Document Font
+% Only works with xelatex
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{Garamond}
+
+% Set Page Margins
+\usepackage[top=1in,right=0.75in,bottom=1.5in,left=1.75in]{geometry}
+
+\begin{document}
+  \title{Untitled}                               % CHANGEME
+  \author{Patrick Morgan}                        % CHANGEME
+
+  % Header/Footer style
+  \pagestyle{headings} % Section number and header on top.
+  \thispagestyle{plain} % No header on First page
+
+  % Title
+  \maketitle
+
+  %% Begin document content
+
+  \section{One}
+
+  Hello, World!
+
+  %% End Document Content
+
+\end{document}

@@ -1,9 +1,9 @@
 require 'rake/clean' # Automatically adds a "rake clean" task
+CLEAN.include FileList['*.log', '*.aux', '*.dvi', '*.toc']
 
-LATEX_BIN = "xelatex"
-CLEAN = FileList['*.log', '*.aux', '*.dvi', '*.pdf', '*.toc']
+LATEX_BIN = ENV['LATEX_BIN'] || "xelatex"
 TEXINPUTS="./tex/:#{ENV['TEXINPUTS']}"
-SOURCES = FileList['*.tex'].to_a.map{|f| [f, File.basename(f, ".*").to_sym ]}
+SOURCES = FileList['*.tex','*/*.tex'].to_a.map{|f| [f, File.basename(f, ".*").to_sym ]}
 
 namespace :tex do
   desc "Make PDF's of all TeX sources"
@@ -21,7 +21,7 @@ end
 
 
 desc "Process tex source"
-task :default => [:clean, :pdf] do; end
+task :default => [:clean, "tex:pdf"] do; end
 
 desc "Bundle Repository"
 task :bundle do

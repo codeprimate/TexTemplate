@@ -5,6 +5,7 @@ LaTeX template for general document use.
 Requires xelatex, Ruby, RubyGems, and the Bundler gem.  You may substitute another LaTeX engine in the Rakefile.
 
 The `minted` Latex package (as used in `examples/example.tex`) requires Python and the `Pygments` package:
+
     $ pip install Pygments
 
 ## Setup

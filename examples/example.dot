@@ -1,0 +1,5 @@
+digraph DotTest {
+  label="DOT Test"
+
+  A->B;
+}

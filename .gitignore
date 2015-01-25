@@ -1,7 +1,9 @@
+*DS_STORE*
 *.*~
+*.sw*
+
 *.aux
 *.dvi
 *.log
 *.pdf
-*.swp
-*DS_STORE*
+*.png

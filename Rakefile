@@ -13,14 +13,9 @@ namespace :tex do
     desc "Render #{source.first} to PDF"
     task source[1] do
       puts " * #{source.first} => #{source.last}.pdf"
-      #system_cmd = "TEXINPUTS=${TEXINPUTS} #{LATEX_BIN} --shell-escape '#{source[0]}'  > /dev/null 2>&1 && #{LATEX_BIN} --shell-escape '#{source[0]}' > /dev/null 2>&1"
-      system_cmd = "TEXINPUTS=${TEXINPUTS} #{LATEX_BIN} --shell-escape '#{source[0]}'"
-      puts "***"
-      puts system_cmd
-      puts "---"
+      system_cmd = "TEXINPUTS=${TEXINPUTS} #{LATEX_BIN} --shell-escape '#{source[0]}' #{"> /dev/null 2>&1 " if ENV['DEBUG'].nil? }"
       system(system_cmd)
-      system(system_cmd)
-      puts "***"
+      system(system_cmd) # Sometimes we need 2 passes for bibliography, etc.
     end
   end
   desc "Make PDF's of all TeX sources"

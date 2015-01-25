@@ -6,4 +6,4 @@
 ```
 
 In your *.tex document:
-`\setmainfont{Garamond}`
+`\setmainfont{Garamond}` or `\setmainfont[Ligatures=TeX]{Garamond}`

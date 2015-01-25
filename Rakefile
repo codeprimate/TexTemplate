@@ -18,12 +18,11 @@ namespace :tex do
       system(system_cmd) # Sometimes we need 2 passes for bibliography, etc.
     end
   end
-  desc "Make PDF's of all TeX sources"
-  task :pdf => LATEX_SOURCES.map{|s| s[1]} do; end
+  desc "Process all TEX Sources"
+  task :tex => LATEX_SOURCES.map{|s| s[1]}
 end
-
-desc "Process all tex sources"
-task :default => [:dot, "tex:pdf"] do; end
+desc "Process TEX sources"
+task tex: ["tex:tex"]
 
 # DOT Processing
 ###
@@ -38,9 +37,13 @@ namespace :dot do
     end
   end
   desc "Process Graphviz Dotfiles - Make PNG's of all DOT sources"
-  task :dot => DOT_SOURCES.map{|s| s[1]} do; end
+  task :dot => DOT_SOURCES.map{|s| s[1]}
 end
+desc "Process DOT sources"
+task dot: ["dot:dot"]
 
+desc "Process all sources"
+task :default => ["dot", "tex"]
 
 desc "Bundle Repository"
 task :bundle do

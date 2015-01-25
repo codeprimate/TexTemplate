@@ -5,5 +5,5 @@
 # fc-list | grep -i garamond
 ```
 
-Then use:
-`\setmainfont{Garamond LT}`
+In your *.tex document:
+`\setmainfont{Garamond}`

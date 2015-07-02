@@ -30,10 +30,12 @@ DOT_SOURCES = FileList['*.dot','*/*.dot'].to_a.map{|f| [f, File.basename(f, ".*"
 DOT_BIN = ENV['DOT_BIN'] || "dot"
 namespace :dot do
   DOT_SOURCES.each do |source|
-    desc "Render #{source.first} to png"
+    desc "Render #{source.first} to png and PDF"
     task source[1] do
       puts " * #{source.first} => #{source.last}.png"
-      system("dot -Tpng '#{ source.first }' -o '#{source.last}.png'")
+      system("#{DOT_BIN} -Tpng '#{ source.first }' -o '#{source.last}.png'")
+      puts " * #{source.first} => #{source.last}.pdf"
+      system("#{DOT_BIN} -Tpdf '#{ source.first }' -o '#{source.last}.pdf'")
     end
   end
   desc "Process Graphviz Dotfiles - Make PNG's of all DOT sources"
